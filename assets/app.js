@@ -5,6 +5,10 @@
  * (and its CSS file) in your base layout (base.html.twig).
  */
 
+const $ = require('jquery');
+require('select2')
+$('select').select2();
+
 // any CSS you import will output into a single css file (app.scss in this case)
 import './styles/app.scss';
 

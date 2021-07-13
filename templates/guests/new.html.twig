@@ -3,9 +3,12 @@
 {% block title %}New Guests{% endblock %}
 
 {% block body %}
-    <h1>Create new Guests</h1>
+    <div class="container my-2">
+        <h1 class="text-center">Ajouter un nouvel invité</h1>
+        <div class="w-100 text-end">
+            <a class="btn btn-primary text-right" href="{{ path('guests_index') }}">Retour à la liste</a>
+        </div>
+    </div>
 
     {{ include('guests/_form.html.twig') }}
-
-    <a href="{{ path('guests_index') }}">back to list</a>
 {% endblock %}

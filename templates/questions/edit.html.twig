@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Questions{% endblock %}
+{% block title %}Edit Question{% endblock %}
 
 {% block body %}
-    <h1>Edit Questions</h1>
+    <div class="container my-2">
+        <h1 class="text-center">Modifier une question</h1>
+        <div class="w-100 text-end">
+            <a class="btn btn-primary text-right" href="{{ path('questions_index') }}">Retour à la liste</a>
+        </div>
+    </div>
 
-    {{ include('questions/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('questions_index') }}">back to list</a>
-
-    {{ include('questions/_delete_form.html.twig') }}
+    {{ include('questions/_form.html.twig', {'button_label': 'Modifier'}) }}
 {% endblock %}

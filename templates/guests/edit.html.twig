@@ -3,11 +3,12 @@
 {% block title %}Edit Guests{% endblock %}
 
 {% block body %}
-    <h1>Edit Guests</h1>
+    <div class="container my-2">
+        <h1 class="text-center">Modifier un invité</h1>
+        <div class="w-100 text-end">
+            <a class="btn btn-primary text-right" href="{{ path('guests_index') }}">Retour à la liste</a>
+        </div>
+    </div>
 
-    {{ include('guests/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('guests_index') }}">back to list</a>
-
-    {{ include('guests/_delete_form.html.twig') }}
+    {{ include('guests/_form.html.twig', {'button_label': 'Modifier'}) }}
 {% endblock %}
