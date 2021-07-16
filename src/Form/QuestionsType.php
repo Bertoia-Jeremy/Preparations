@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\Guests;
 use App\Entity\Questions;
-use App\Repository\GuestsRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,12 +17,11 @@ class QuestionsType extends AbstractType
             ->add('content')
             ->add('related', EntityType::class, [
                 'class' => Guests::class,
-                'choice_label' => 'firstName',
-                'query_builder' => function (GuestsRepository $e) {
-                    return $e->createQueryBuilder('g')
-                        ->orderBy('g.firstName', 'ASC');
-                },
-                'multiple'=> true
+                'multiple'=> true,
+                'choice_label' =>  function (Guests $guests) {
+                    return $guests->getFirstName() . ' ' . $guests->getLastName();
+                }
+
             ])
 
         ;

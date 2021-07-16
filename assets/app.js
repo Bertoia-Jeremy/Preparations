@@ -4,13 +4,11 @@
  * We recommend including the built version of this JavaScript file
  * (and its CSS file) in your base layout (base.html.twig).
  */
-
-const $ = require('jquery');
-require('select2')
-$('select').select2();
-
+import './jquery';
 // any CSS you import will output into a single css file (app.scss in this case)
 import './styles/app.scss';
+const $ = require('jquery');
+
 
 // start the Stimulus application
 import './bootstrap';

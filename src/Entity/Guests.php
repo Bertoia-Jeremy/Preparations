@@ -39,6 +39,11 @@ class Guests
      */
     private $questions;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Quizz::class, mappedBy="guests", cascade={"persist", "remove"})
+     */
+    private $quizz;
+
     public function __construct()
     {
         $this->questions = new ArrayCollection();
@@ -108,6 +113,23 @@ class Guests
         if ($this->questions->removeElement($question)) {
             $question->removeRelated($this);
         }
+
+        return $this;
+    }
+
+    public function getQuizz(): ?Quizz
+    {
+        return $this->quizz;
+    }
+
+    public function setQuizz(Quizz $quizz): self
+    {
+        // set the owning side of the relation if necessary
+        if ($quizz->getGuests() !== $this) {
+            $quizz->setGuests($this);
+        }
+
+        $this->quizz = $quizz;
 
         return $this;
     }

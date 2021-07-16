@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quizz index{% endblock %}
+
+{% block body %}
+    <div class="container my-2">
+        <h1 class="text-center">Statistiques pour le questionnaire :</h1>
+        <div class="w-100 d-flex justify-content-between">
+            <h4>Total de questions : {{ questions|length }}</h4>
+            <a class="btn btn-primary text-right" href="{{ path('quizz_new') }}">Créer un nouveau questionnaire</a>
+        </div>
+    </div>
+
+    <section class="container">
+        <table class="table table-striped text-center">
+            <thead>
+                <tr>
+                    <th>Nom Prénom</th>
+                    <th>Nombre de questions concernées</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for guest in guests %}
+                <tr>
+                    <td>{{ guest.lastName ~ ' ' ~ guest.firstName }}</td>
+                    <td>
+                        {{ guest.questions|length }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="2">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+{% endblock %}
